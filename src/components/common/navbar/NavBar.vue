@@ -16,7 +16,8 @@ export default {
   display: flex;
   line-height: 44px;
   height: 44px;
-  background-color: #f6f6f6;
+  background-color: var(--color-tint);
+  color: #fff;
 }
 .right,
 .left{
