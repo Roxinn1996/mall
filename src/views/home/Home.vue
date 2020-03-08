@@ -72,6 +72,7 @@ export default {
       this.$refs.scroll.refresh();
     })
  
+ 
   },
   mounted(){
        console.log(this.$refs.scroll)
