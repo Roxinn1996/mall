@@ -3,7 +3,7 @@
     <nav-bar class="nav-bar"><div slot="center">购物街</div></nav-bar>
 
 
-    <scroll class="scroll_box" ref="scroll">
+    <scroll class="scroll_box" ref="scroll" :probe-type="3" @scroll="contentScroll" @pullingUp="loadMore">
         
         <home-swiper :banners="banners" />
         <recommend-view :recommends="recommends"/>
@@ -12,6 +12,8 @@
         <goods-list :goodslist="showGoods" ></goods-list>
     
     </scroll>
+
+    <back-top @click.native="backClick()"  v-show="isShowBackTop"/>
 
   </div>
 </template>
@@ -28,8 +30,7 @@ import FeatureView from './childComps/FeatureView'
 import NavBar from '@/components/common/navbar/NavBar'
 import TabContorl from '@/components/content/tabControl/TabControl'
 import GoodsList from '@/components/content/goods/GoodsList'
-
-
+import BackTop from '@/components/content/backTop/BackTop'
 import Scroll from '@/components/common/scroll/Scroll'
 
 export default {
@@ -42,12 +43,14 @@ export default {
     TabContorl,
     GoodsList,
     Scroll,
+    BackTop
   },
   data(){
     return{
       banners:[],
       recommends:[],
       currentType:'pop',
+      isShowBackTop:false,
       goodstitle:[
         {type:'pop',title:'流行'},
         {type:'new',title:'新款'},
@@ -63,19 +66,20 @@ export default {
   created(){
     //轮播，推荐
     this.getHomeMultidata();
+
     //分类商品数据
     this.getHomeGoods('pop');
     this.getHomeGoods('new');
     this.getHomeGoods('sell');
-    //监听item图片加载完成
-    this.$bus.$on('itemImageLoad',()=>{
-      this.$refs.scroll.refresh();
-    })
+
  
  
   },
   mounted(){
-       console.log(this.$refs.scroll)
+      //监听item图片加载完成
+      this.$bus.$on('itemImageLoad',()=>{
+        this.$refs.scroll.refresh();
+      })
   },
   computed:{
     showGoods(){
@@ -83,7 +87,6 @@ export default {
     }
   },
   methods:{
-    
      //轮播，推荐
     getHomeMultidata(){
        getHomeMultidata().then(suc=>{
@@ -99,8 +102,22 @@ export default {
         this.goods[type].page  =pages ;
       })
     },
+    //商品类型选择TAB
     tabClick(type){
       this.currentType = type;
+    },
+    //返回顶部
+    backClick(){
+      this.$refs.scroll.scrollTo(0,0);
+      
+    },
+    //监听滚动
+    contentScroll(position){
+      this.isShowBackTop = (-position.y) > 1000
+    },
+    //下拉加载
+    loadMore(){
+      
     }
   }
 }
@@ -127,7 +144,8 @@ export default {
 }
 
 .scroll_box{
-  height: calc(100% - 93px);
+  /* height: calc(100% - 93px); */
+  height: calc(100% - 49px);
   overflow-y: hidden;
 }
 </style>

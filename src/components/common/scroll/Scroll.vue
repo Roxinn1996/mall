@@ -12,38 +12,56 @@
 import BScroll from 'better-scroll'  //滚动
 export default {
     name:'Scroll',
+    props:{
+        probeType:{
+            type:Number,
+            default:0
+        }
+    },
     data(){
         return {
             scroll : null,
         }
     },
     mounted(){
+        //创建BSscroll对象
         this.scroll = new BScroll(this.$refs.wrapper,{
             click :true,
-            probeType:3
+            probeType:this.probeType,
+            pullUpLoad:true
         })
-        
-        // console.log(this.scroll)
+
+        //监听滚动
+        if(this.probeType == 2 || this.probeType ==3){
+          this.scroll.on('scroll',(position)=>{
+            this.$emit('scroll',position)
+          })
+        }
+
+        //监听滚到最底部
+        // this.scroll.on('pullingUp',()=>{
+        //   // console.log(down);
+        // })
+        this.scroll.on('pullingUp', () => {
+          // console.log('到底');
+          this.$emit('pullingUp');
+        })
     },
     methods:{
-        refresh(){
-            this.scroll.refresh();
+        //返回顶部
+        scrollTo(x,y,time=300){
+             this.scroll && this.scroll.scrollTo(x,y,time);
         },
-        hahaha(){
-
-        }
+        //重载scroll计算高度
+        refresh(){
+            this.scroll && this.scroll.refresh();
+        },
+      
     },
-    computed:{
-        gungungun(){
-
-        }
-    }
+  
 }
 </script>
 
 <style>
-.wrapper{
-    
-}
 
 </style>
