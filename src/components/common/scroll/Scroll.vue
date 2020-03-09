@@ -16,6 +16,10 @@ export default {
         probeType:{
             type:Number,
             default:0
+        },
+        pullUpLoad:{
+            type:Boolean,
+            default:false
         }
     },
     data(){
@@ -28,7 +32,7 @@ export default {
         this.scroll = new BScroll(this.$refs.wrapper,{
             click :true,
             probeType:this.probeType,
-            pullUpLoad:true
+            pullUpLoad:this.pullUpLoad
         })
 
         //监听滚动
@@ -39,13 +43,12 @@ export default {
         }
 
         //监听滚到最底部
-        // this.scroll.on('pullingUp',()=>{
-        //   // console.log(down);
-        // })
-        this.scroll.on('pullingUp', () => {
-          // console.log('到底');
-          this.$emit('pullingUp');
-        })
+        if(this.pullUpLoad){
+           this.scroll.on('pullingUp', () => {
+              this.$emit('pullingUp'); 
+            })
+        }
+      
     },
     methods:{
         //返回顶部
@@ -54,9 +57,13 @@ export default {
         },
         //重载scroll计算高度
         refresh(){
+            // console.log('---')
             this.scroll && this.scroll.refresh();
         },
-      
+        //下拉重新计算高度
+        finishPullUp(){
+           this.scroll &&  this.scroll.finishPullUp();
+        }
     },
   
 }

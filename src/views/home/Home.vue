@@ -3,9 +3,13 @@
     <nav-bar class="nav-bar"><div slot="center">购物街</div></nav-bar>
 
 
-    <scroll class="scroll_box" ref="scroll" :probe-type="3" @scroll="contentScroll" @pullingUp="loadMore">
+    <scroll class="scroll_box" ref="scroll" 
+            :probe-type="3"
+            :pull-up-load="true"
+            @scroll="contentScroll" 
+            @pullingUp="loadMore">
         
-        <home-swiper :banners="banners" />
+        <home-swiper :banners="banners" />  
         <recommend-view :recommends="recommends"/>
         <feature-view/>
         <tab-contorl class="tab-control" :titles="goodstitle" @tabClick="tabClick" />
@@ -32,6 +36,7 @@ import TabContorl from '@/components/content/tabControl/TabControl'
 import GoodsList from '@/components/content/goods/GoodsList'
 import BackTop from '@/components/content/backTop/BackTop'
 import Scroll from '@/components/common/scroll/Scroll'
+import {debounce} from '@/common/etils'
 
 export default {
   name: 'Home',
@@ -77,9 +82,13 @@ export default {
   },
   mounted(){
       //监听item图片加载完成
+      //使用防抖增加性能，减少refresh调用次数
+      const refresh = debounce(this.$refs.scroll.refresh,50) 
       this.$bus.$on('itemImageLoad',()=>{
-        this.$refs.scroll.refresh();
+        // this.$refs.scroll.refresh();
+        refresh()
       })
+
   },
   computed:{
     showGoods(){
@@ -99,7 +108,9 @@ export default {
       const pages  = this.goods[type].page + 1;
        getHomeGoods(type,pages).then(suc=>{
         this.goods[type].list.push(...suc.data.data.list);
-        this.goods[type].page  =pages ;
+        this.goods[type].page += 1
+        // 完成上拉加载更多
+        this.$refs.scroll.finishPullUp();
       })
     },
     //商品类型选择TAB
@@ -117,7 +128,8 @@ export default {
     },
     //下拉加载
     loadMore(){
-      
+      this.getHomeGoods(this.currentType);
+      console.log('加载axios')
     }
   }
 }
