@@ -12,7 +12,7 @@
         <home-swiper :banners="banners" />  
         <recommend-view :recommends="recommends"/>
         <feature-view/>
-        <tab-contorl class="tab-control" :titles="goodstitle" @tabClick="tabClick" />
+        <tab-contorl class="tab-control" :titles="goodsTitle" @tabClick="tabClick" />
         <goods-list :goodslist="showGoods" ></goods-list>
     
     </scroll>
@@ -56,7 +56,7 @@ export default {
       recommends:[],
       currentType:'pop',
       isShowBackTop:false,
-      goodstitle:[
+      goodsTitle:[
         {type:'pop',title:'流行'},
         {type:'new',title:'新款'},
         {type:'sell',title:'精选'},

@@ -28,6 +28,7 @@ export default {
     flex-wrap:wrap;
     position: relative;
     padding-bottom: 60px;
-    justify-content:space-around--
+    justify-content:space-around;
+    
 }
 </style>
