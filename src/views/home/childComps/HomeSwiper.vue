@@ -3,7 +3,7 @@
         <swiper>  
             <swiper-item v-for="item in banners" :key="item.title">
             <a :href="item.link">
-                <img :src="item.image">
+                <img :src="item.image" @load="imgLoda" >
             </a>
             </swiper-item>
         </swiper>
@@ -20,6 +20,19 @@ export default {
             type:Array,
             default(){
                 return[]
+            }
+        }
+    },
+    data(){
+        return{
+            isimgLoda:false
+        }
+    },
+    methods:{
+        imgLoda(){
+            if(!this.isimgLoda){
+                this.$emit('imgLoda');  
+                this.isimgLoda = true;
             }
         }
     },

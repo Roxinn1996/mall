@@ -63,6 +63,10 @@ export default {
         //下拉重新计算高度
         finishPullUp(){
            this.scroll &&  this.scroll.finishPullUp();
+        },
+        //获取他当前的y值
+        getScrollY(){
+            return this.scroll ? this.scroll.y :0
         }
     },
   

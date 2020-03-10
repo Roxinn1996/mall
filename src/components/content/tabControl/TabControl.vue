@@ -25,7 +25,7 @@ export default {
     methods:{
         isColor(index,type){
             this.currentIndex = index ;
-            this.$emit('tabClick',type)
+            this.$emit('tabClick',type,index)
         }
     },
 }
