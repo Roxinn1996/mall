@@ -16,12 +16,11 @@ export default {
   display: flex;
   line-height: 44px;
   height: 44px;
-  background-color: var(--color-tint);
-  color: #fff;
 }
 .right,
 .left{
   width: 60px;
+  text-align: center;
 }
 .center{
   flex: 1;

@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <nav-bar class="nav-bar"><div slot="center">购物街</div></nav-bar>
+    <nav-bar class="home-nav-bar"><div slot="center">购物街</div></nav-bar>
     <tab-contorl class="tab-control1" 
                 :titles="goodsTitle" 
                 @tabClick="tabClick"  
@@ -170,8 +170,10 @@ export default {
 #home{
   height: 100vh;  
 }
-.nav-bar{
+.home-nav-bar{
   z-index: 9;
+  background-color: var(--color-tint);
+  color: #fff;
 }
 .tab-control{
   background-color: #fff;

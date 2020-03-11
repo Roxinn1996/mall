@@ -4,7 +4,7 @@ const Home = () => import('@/views/home/Home.vue');
 const Category = () => import('@/views/category/Category.vue');
 const Profile = () => import('@/views/profile/Profile.vue');
 const ShopCats = () => import('@/views/shopcats/ShopCats.vue');
-
+const Detail = ()=>import('@/views/detail/Detail.vue');
 Vue.use(VueRouter)
 
 const routes = [
@@ -31,6 +31,11 @@ const routes = [
     path: '/ShopCats',
     name: 'ShopCats',
     component: ShopCats
+  },
+  {
+    path: '/detail/:iid',
+    name: 'Detail',
+    component: Detail
   },
   
  
