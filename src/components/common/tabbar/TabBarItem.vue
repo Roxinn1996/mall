@@ -26,7 +26,9 @@ export default {
     },
     methods:{
         itemClick(){
-            this.$router.replace(this.link);
+            if(this.$route.path.indexOf(this.link) == -1){
+              this.$router.replace(this.link);
+            }
         }
     }
 }

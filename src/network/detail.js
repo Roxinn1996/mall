@@ -9,7 +9,7 @@ export function getGoodsDetail(iid){
 //创建一个商品的类
 //商品信息
 export class Goods {
-  constructor(itemInfo, columns, services) {
+  constructor(itemInfo, columns, services) {  //constructor 为构造器
     this.title = itemInfo.title
     this.desc = itemInfo.desc
     this.newPrice = itemInfo.price
