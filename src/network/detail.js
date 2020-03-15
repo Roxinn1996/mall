@@ -6,6 +6,12 @@ export function getGoodsDetail(iid){
   })
 }
 
+export function getRecommend(){
+  return request({
+    url:'/recommend'
+  })
+}
+
 //创建一个商品的类
 //商品信息
 export class Goods {
@@ -30,5 +36,14 @@ export class Shop {
     this.sells = shopInfo.cSells;
     this.score = shopInfo.score;
     this.goodsCount = shopInfo.cGoods
+  }
+}
+//尺码等等信息
+
+export class GoodsParam{
+  constructor(info,rule){
+    this.image = info.images ? info.images[0] : '';
+    this.infos =info.set;
+    this.sizes = rule.tables;
   }
 }

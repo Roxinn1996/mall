@@ -32,6 +32,7 @@ export default {
     //tab切换
     itemClick(index){
       this.currIndex =index;
+      this.$emit('detailTabClik',index);
     },
     //返回
     backClick(){

@@ -1,6 +1,6 @@
 <template>
     <div class="goods-item" @click="itemClick">
-        <img :src="goodsitem.show.img" @load="imageLoad">
+        <img :src="imgshow" @load="imageLoad">
         <div class="goods-info">
             <p>{{goodsitem.title}}</p>
             <span class="price">￥{{goodsitem.price}}</span>
@@ -23,11 +23,21 @@ export default {
     methods:{
         imageLoad(){
             //事件总线
-            this.$bus.$emit('itemImageLoad')
+            if(this.$route.path.indexOf('/home') == 0){
+                this.$bus.$emit('itemImageLoad')
+            }
+            //这是给详情页的
+            if(this.$route.path.indexOf('/detail') == 0){
+               this.$bus.$emit('loadDetail')
+            }
         },
         itemClick(){
-            console.log('1111');
             this.$router.push('/detail/'+this.goodsitem.iid)
+        }
+    },
+    computed:{
+        imgshow(){
+            return this.goodsitem.image || this.goodsitem.show.img 
         }
     }
 }

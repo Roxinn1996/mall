@@ -40,7 +40,7 @@ import TabContorl from '@/components/content/tabControl/TabControl'
 import GoodsList from '@/components/content/goods/GoodsList'
 import BackTop from '@/components/content/backTop/BackTop'
 import Scroll from '@/components/common/scroll/Scroll'
-import {debounce} from '@/common/etils'
+import {debounce} from '@/common/utils'
 
 export default {
   name: 'Home',
