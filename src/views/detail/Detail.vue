@@ -150,6 +150,7 @@ export default {
       product.price = this.goods.realPrice
       product.iid = this.iid
       product.count = 1;
+      product.checked = true;
       this.$store.commit('addCart',product);
       //每次加入购物车，购物车的scroll 的高度就要计算一次
     }
