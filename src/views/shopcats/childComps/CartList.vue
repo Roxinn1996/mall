@@ -1,6 +1,6 @@
 <template>
   <div class="cat-list">
-    <scroll class="scroll-box">
+    <scroll class="scroll-box" ref="scroll">
       <cart-list-item v-for="(item,index) in cartList" :key="index" :product="item"/>
 
     </scroll>
@@ -22,6 +22,10 @@
     },
     computed:{
       ...mapGetters(['cartList'])  
+    },
+    activated(){
+      console.log('你爹来了')
+      this.$refs.scroll.refresh();
     }
   }
 </script>
@@ -29,7 +33,7 @@
 <style scoped>
 .cat-list{
   position: relative;
-  height: calc(100% - 44px - 49px);
+  height: calc(100% - 44px - 49px - 44px);
 }
 .scroll-box{
   height: 100%;

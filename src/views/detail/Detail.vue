@@ -152,7 +152,8 @@ export default {
       product.count = 1;
       product.checked = true;
       this.$store.commit('addCart',product);
-      //每次加入购物车，购物车的scroll 的高度就要计算一次
+      //每次加入购物车，购物车的scroll 的高度就要计算一次,有个办法，就是在进入购物车时候，使用生命周期函数，去重新获取一次scroll高度
+      
     }
   }
 

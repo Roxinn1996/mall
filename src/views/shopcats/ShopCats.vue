@@ -5,6 +5,7 @@
     </nav-bar>
 
     <cart-list/>
+    <cart-bottom-bar/>
 
   </div>
 </template>
@@ -15,12 +16,14 @@
 import NavBar from '@/components/common/navbar/NavBar'
 //子组件
 import CartList from './childComps/CartList'
+import CartBottomBar from './childComps/CartBottomBar'
 
 export default {
   name: 'ShopCats',
   components: {
     NavBar,
     CartList,
+    CartBottomBar
   },
   computed:{
     //头部购物车数量
