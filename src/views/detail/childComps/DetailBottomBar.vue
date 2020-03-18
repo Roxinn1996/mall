@@ -27,13 +27,6 @@
     methods:{
       addToCart(){
         this.$emit('addCart');
-        this.$notify({
-          title: '成功',
-          message: '添加成功',
-          type: 'success',
-          position: 'bottom-right',
-          offset: 100
-        });
       }
     }
   }

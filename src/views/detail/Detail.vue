@@ -12,11 +12,12 @@
         <goods-list :goodslist="recommendList" ref="goods"/>
     </scroll>
 
-    <detail-bottom-bar @addCart="addCart"/>
+    <detail-bottom-bar @addCart="addCarts"/>
   </div>
 </template>
 
 <script>
+import { mapActions} from 'vuex'
 //axios
 import {getGoodsDetail,Goods,Shop,GoodsParam,getRecommend} from '@/network/detail'
 //公共
@@ -125,6 +126,7 @@ export default {
     
   },
   methods:{
+    ...mapActions(['addCart']),
     loadimg(){
       // debounce(this.$refs.scroll.refresh,50)()
       // this.$refs.scroll.refresh();
@@ -142,7 +144,7 @@ export default {
         }
       }
     },
-    addCart(){
+    addCarts(){
       const product ={}
       product.image = this.topImages[0]
       product.title = this.goods.title
@@ -151,9 +153,30 @@ export default {
       product.iid = this.iid
       product.count = 1;
       product.checked = true;
-      this.$store.commit('addCart',product);
       //每次加入购物车，购物车的scroll 的高度就要计算一次,有个办法，就是在进入购物车时候，使用生命周期函数，去重新获取一次scroll高度
-      
+     ////常规使用
+     // this.$store.commit('addCart',product);
+      // this.$store.dispatch('addCart',product).then(suc=>{
+      //   this.$notify({
+      //     // title: '成功',
+      //     message: suc,
+      //     type: 'success',
+      //     position: 'bottom-right',
+      //     offset: 100
+      //   });
+      // })
+
+      //花里胡哨
+      this.addCart(product).then(suc=>{
+        this.$notify({
+          // title: '成功',
+          message: suc,
+          type: 'success',
+          position: 'bottom-right',
+          offset: 100
+        });
+      })
+     
     }
   }
 
