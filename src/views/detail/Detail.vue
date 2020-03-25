@@ -87,14 +87,7 @@ export default {
       }
       //给获取用防抖
      
-      this.getThemTopY = debounce(()=>{
-        this.themeTopYs =[];
-        this.themeTopYs.push(0);
-        this.themeTopYs.push(this.$refs.param.$el.offsetTop);
-        this.themeTopYs.push(this.$refs.comment.$el.offsetTop);
-        this.themeTopYs.push(this.$refs.goods.$el.offsetTop);
-        this.themeTopYs.push(this.$refs.goods.$el.offsetTop+ this.$refs.goods.$el.offsetHeight);
-      },100)
+    
 
      
       //获取导航对应的div top
@@ -116,14 +109,20 @@ export default {
   mounted(){
     this.loadRefresh = debounce(this.$refs.scroll.refresh,50);
     // const refresh = debounce(this.$refs.scroll.refresh,50)  //old
+   
+    this.getThemTopY = debounce(()=>{
+      this.themeTopYs =[];
+      this.themeTopYs.push(0);
+      this.themeTopYs.push(this.$refs.param.$el.offsetTop);
+      this.themeTopYs.push(this.$refs.comment.$el.offsetTop);
+      this.themeTopYs.push(this.$refs.goods.$el.offsetTop);
+      this.themeTopYs.push(this.$refs.goods.$el.offsetTop+ this.$refs.goods.$el.offsetHeight);
+    },100)
+  
     this.$bus.$on('loadDetail',()=>{
-      // refresh(); //old
       this.loadRefresh();
       this.getThemTopY();
     })
-
-  
-    
   },
   methods:{
     ...mapActions(['addCart']),
