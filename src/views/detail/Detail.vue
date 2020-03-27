@@ -123,6 +123,7 @@ export default {
       this.loadRefresh();
       this.getThemTopY();
     })
+    console.log(this.$refs.scroll.scroll)
   },
   methods:{
     ...mapActions(['addCart']),
@@ -167,13 +168,7 @@ export default {
 
       //花里胡哨
       this.addCart(product).then(suc=>{
-        this.$notify({
-          // title: '成功',
-          message: suc,
-          type: 'success',
-          position: 'bottom-right',
-          offset: 100
-        });
+        
       })
      
     }

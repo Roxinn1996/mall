@@ -30,6 +30,9 @@ export default {
             if(this.$route.path.indexOf('/detail') == 0){
                this.$bus.$emit('loadDetail')
             }
+            if(this.$route.path.indexOf('/category') == 0){
+               this.$bus.$emit('loadDetailCat')
+            }
         },
         itemClick(){
             this.$router.push('/detail/'+this.goodsitem.iid)
@@ -37,7 +40,7 @@ export default {
     },
     computed:{
         imgshow(){
-            return this.goodsitem.image || this.goodsitem.show.img 
+            return  this.goodsitem.img  || this.goodsitem.image || this.goodsitem.show.img 
         }
     }
 }

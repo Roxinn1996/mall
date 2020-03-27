@@ -93,18 +93,19 @@ export default {
         // this.$refs.scroll.refresh();
         refresh()
       })
+      console.log(this.$refs.scroll.scroll)
   },
   destroyed(){
     //销毁dom
   },
   activated(){
-    console.log('当前活跃')
+    // console.log('当前活跃')
     //读取保存下来的y值
     this.$refs.scroll.scrollTo(0,this.saveY,0);
     this.$refs.scroll.refresh();
   },
   deactivated(){
-    console.log('失去活跃')
+    // console.log('失去活跃')
     //将现在的y的位置保存下来
     this.saveY = this.$refs.scroll.getScrollY();
 

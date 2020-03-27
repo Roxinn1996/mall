@@ -13,3 +13,13 @@ export function getCateforyData(maitKey){
     }
   })
 }
+
+export function getCateforyGoods(miniWallkey,type){
+  return request({
+    url:'/subcategory/detail',
+    params:{
+      miniWallkey,
+      type
+    }
+  })
+}

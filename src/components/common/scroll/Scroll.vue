@@ -48,6 +48,7 @@ export default {
               this.$emit('pullingUp'); 
             })
         }
+       setTimeout(this.refresh, 500)  //延迟500ms刷新一次
       
     },
     methods:{
@@ -57,8 +58,9 @@ export default {
         },
         //重载scroll计算高度
         refresh(){
-            // console.log('---').
             this.scroll && this.scroll.refresh();
+            console.log('---')
+
         },
         //下拉重新计算高度
         finishPullUp(){

@@ -3,15 +3,12 @@
     <nav-bar class="cats-title">
       <template #center>购物车({{cartLength}})</template>
     </nav-bar>
-
     <cart-list/>
     <cart-bottom-bar/>
-
   </div>
 </template>
 
 <script>
-
 //公共
 import NavBar from '@/components/common/navbar/NavBar'
 //子组件
@@ -23,7 +20,8 @@ export default {
   components: {
     NavBar,
     CartList,
-    CartBottomBar
+    CartBottomBar,
+
   },
   computed:{
     //头部购物车数量

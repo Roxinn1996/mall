@@ -24,7 +24,7 @@
       ...mapGetters(['cartList'])  
     },
     activated(){
-      console.log('你爹来了')
+      // console.log('你爹来了')
       this.$refs.scroll.refresh();
     }
   }
