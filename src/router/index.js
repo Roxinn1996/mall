@@ -5,6 +5,8 @@ const Category = () => import('@/views/category/Category.vue');
 const Profile = () => import('@/views/profile/Profile.vue');
 const ShopCats = () => import('@/views/shopcats/ShopCats.vue');
 const Detail = ()=>import('@/views/detail/Detail.vue');
+const Address =() => import('@/views/address/Address.vue')
+const Addedit = ()=>import('@/views/address/Addedit.vue')
 Vue.use(VueRouter)
 
 const routes = [
@@ -36,6 +38,16 @@ const routes = [
     path: '/detail/:iid',
     name: 'Detail',
     component: Detail
+  },
+  {
+    path: '/address',
+    name: 'Address',
+    component: Address,
+  },
+  {
+    path: '/addedit',
+    name: 'Addedit',
+    component: Addedit
   },
   
  

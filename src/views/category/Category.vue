@@ -8,7 +8,9 @@
 
         <div class="category-content">
             <scroll class="content-scroll" ref="scroll">
+
               <category-menu :category-data="showCategoryData"/>
+             
               <tab-control :titles="categoryTitle" @tabClick="tabClick"/>
               <category-goods :categoryData="showGoodsData" />
             </scroll>
@@ -57,7 +59,7 @@ export default {
     CategoryList,
     CategoryMenu,
     TabControl,
-    CategoryGoods
+    CategoryGoods,
   },
   created(){
     this._getCategory();  

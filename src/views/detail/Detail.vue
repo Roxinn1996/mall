@@ -18,6 +18,9 @@
 
 <script>
 import { mapActions} from 'vuex'
+//UI
+import { Toast } from 'vant';
+
 //axios
 import {getGoodsDetail,Goods,Shop,GoodsParam,getRecommend} from '@/network/detail'
 //公共
@@ -48,7 +51,7 @@ export default {
     DetailParamInfo,
     DetailCommentInfo,
     GoodsList,
-    DetailBottomBar
+    DetailBottomBar,
   },
   data(){
     return{
@@ -168,7 +171,7 @@ export default {
 
       //花里胡哨
       this.addCart(product).then(suc=>{
-        
+        Toast.success(suc);
       })
      
     }
