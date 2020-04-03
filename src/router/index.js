@@ -7,6 +7,7 @@ const ShopCats = () => import('@/views/shopcats/ShopCats.vue');
 const Detail = ()=>import('@/views/detail/Detail.vue');
 const Address =() => import('@/views/address/Address.vue')
 const Addedit = ()=>import('@/views/address/Addedit.vue')
+const Layout = () =>import('@/layout/index.vue')
 Vue.use(VueRouter)
 
 const routes = [
@@ -42,19 +43,26 @@ const routes = [
   {
     path: '/address',
     name: 'Address',
-    component: Address,
+    component: Layout,
+    children:[
+      {
+        path:'/',
+        name:'Address',
+        component:Address
+      },
+      {
+        path: 'addedit',
+        name: 'Addedit',
+        component: Addedit
+      }
+    ]
   },
-  {
-    path: '/addedit',
-    name: 'Addedit',
-    component: Addedit
-  },
-  
  
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  // mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes
 })

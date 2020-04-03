@@ -141,7 +141,8 @@ export default {
 
 <style>
 #category{
-  height: 100vh;
+  height: calc(100vh - 44px);
+  position: relative;
 }
 .category-nav-bar{
   position: relative;
@@ -151,7 +152,8 @@ export default {
 }
 .category-box{
   display: flex;
-  height: calc(100% - 44px - 49px);
+  height: calc(100% - 49px);
+  overflow: hidden;
   width: 100%;
 }
 

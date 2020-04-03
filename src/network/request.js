@@ -44,9 +44,10 @@ export function huiben(config){
         //失败
         console.log(err);
     })
+
     // 响应拦截
     instance.interceptors.response.use(config =>{
-        // console.log(config);
+        //响应
         return config
     },err=>{
         console.log(err);

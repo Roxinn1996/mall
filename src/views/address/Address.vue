@@ -23,7 +23,7 @@
         this.$router.back();
       },
       addClick(){
-        this.$router.push('/addedit')
+        this.$router.push('/address/addedit')
       }
       
     },
