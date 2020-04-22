@@ -1,3 +1,4 @@
+//防抖
 export function debounce(func,delay){
     let timer = null
     return function (...args){
@@ -27,10 +28,11 @@ export function formatDate(date, fmt) {
       }
     }
     return fmt;
-  };
+};
   
-  function padLeftZero (str) {
-    return ('00' + str).substr(str.length);
-  };
-  
+
+function padLeftZero (str) {
+  return ('00' + str).substr(str.length);
+};
+
   
